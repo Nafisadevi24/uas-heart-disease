@@ -1,64 +1,102 @@
-# Heart Disease Prediction App
-Aplikasi prediksi penyakit jantung menggunakan Random Forest Classifier.
+# ❤️ Heart Disease Prediction App
 
-## Struktur Folder
-```
-heart-disease-app/
+Aplikasi prediksi penyakit jantung berbasis **Flask** yang menggunakan algoritma **Random Forest Classifier** untuk memprediksi kemungkinan penyakit jantung berdasarkan data kesehatan yang dimasukkan pengguna.
+
+## 📁 Struktur Folder
+
+```text
+heart-deploy/
 ├── templates/
-│   └── index.html       ← tampilan website
-├── app.py               ← server Flask
-├── model_heart.pkl      ← model hasil training (dari Colab)
-├── scaler.pkl           ← scaler hasil training (dari Colab)
-├── Procfile             ← untuk Heroku
-└── requirements.txt     ← library yang dibutuhkan
+│   └── index.html
+├── app.py
+├── model_heart.pkl
+├── scaler.pkl
+├── Procfile
+└── requirements.txt
 ```
 
-## Cara Deploy ke Heroku
+## ⚙️ Cara Menjalankan Aplikasi
 
-### 1. Persiapan (lakukan sekali)
-- Install [Anaconda](https://www.anaconda.com)
-- Install [VS Code](https://code.visualstudio.com)
-- Daftar akun di [Heroku](https://www.heroku.com)
-- Install [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
+### 1. Buka Terminal
+Pastikan Python 3.9 atau versi yang lebih baru telah terinstal pada sistem.
+Buka VS Code → **Terminal** atau gunakan **CMD/PowerShell**.
+Pastikan terminal berada pada folder project yang berisi file:
 
-### 2. Letakkan file model
-Copy `model_heart.pkl` dan `scaler.pkl` dari Google Colab ke folder ini.
+* `app.py`
+* `requirements.txt`
+* `model_heart.pkl`
+* `scaler.pkl`
 
-### 3. Coba jalankan lokal dulu
+### 2. (Opsional) Membuat Virtual Environment
+
+Disarankan untuk menghindari konflik library dengan project lain.
+
 ```bash
-# Buat virtual environment
-conda create --name heart-deploy python=3.9
-conda activate heart-deploy
+python -m venv venv
+```
 
-# Install library
+Aktifkan virtual environment:
+
+**Windows**
+
+```bash
+venv\Scripts\activate
+```
+
+**Linux / macOS**
+
+```bash
+source venv/bin/activate
+```
+
+### 3. Install Dependencies
+
+Install seluruh library yang diperlukan:
+
+```bash
 pip install -r requirements.txt
+```
 
-# Jalankan
+### 4. Jalankan Aplikasi Flask
+
+```bash
 python app.py
 ```
-Buka browser: http://localhost:5000
 
-### 4. Deploy ke Heroku
-```bash
-# Login Heroku
-heroku login
+Jika berhasil, terminal akan menampilkan:
 
-# Buat app baru di Heroku (ganti nama sesuai keinginan)
-heroku create nama-app-kamu
-
-# Upload ke Heroku
-git init
-heroku git:remote -a nama-app-kamu
-git add .
-git commit -m "deploy pertama"
-git push heroku master
+```text
+Running on http://127.0.0.1:5000
 ```
 
-### 5. Buka website
-Setelah selesai, Heroku akan memberikan URL seperti:
-`https://nama-app-kamu.herokuapp.com`
+### 5. Akses Melalui Browser
 
-## Catatan Penting
-- File `model_heart.pkl` dan `scaler.pkl` HARUS ada di folder ini
-- Versi library di `requirements.txt` harus sama dengan yang dipakai di Colab
-- Aplikasi ini hanya untuk keperluan akademis, bukan diagnosis medis
+Buka browser (Chrome, Edge, Firefox, dan lain-lain), kemudian akses:
+
+```text
+http://127.0.0.1:5000
+```
+
+## 🩺 Fitur Aplikasi
+
+* Prediksi penyakit jantung menggunakan Random Forest Classifier
+* Antarmuka berbasis web menggunakan Flask
+* Input parameter kesehatan secara interaktif
+* Menampilkan hasil prediksi dan tingkat keyakinan (confidence)
+* Mendukung penggunaan model machine learning yang telah dilatih sebelumnya
+
+## 🛠️ Teknologi yang Digunakan
+
+* Python
+* Flask
+* Scikit-learn
+* Pandas
+* NumPy
+* Pickle
+
+## 📌 Catatan Penting
+
+* File `model_heart.pkl` dan `scaler.pkl` wajib tersedia pada folder utama project.
+* Versi library pada `requirements.txt` harus sesuai dengan versi yang digunakan saat proses training model.
+* Aplikasi ini dibuat untuk keperluan akademis dan tugas mata kuliah Machine Learning.
+* Hasil prediksi tidak dapat digunakan sebagai diagnosis medis profesional dan tidak menggantikan konsultasi dengan tenaga kesehatan.
